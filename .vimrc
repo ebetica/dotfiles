@@ -56,7 +56,7 @@ if filereadable(expand("~/dotfiles/vundles.vim"))
 endif
 
 " Semantic Highlight
-autocmd BufWrite,BufRead,InsertLeave * :SemanticHighlight
+autocmd BufWrite,BufRead,InsertLeave *.c,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs :SemanticHighlight
 
 "NERDTree
 nnoremap <C-u> :NERDTreeToggle %<CR>
@@ -64,3 +64,8 @@ let NERDTreeQuitOnOpen=1
 
 "CtrlP
 nnoremap tn :CtrlPMixed<CR>
+
+" in makefiles, don't expand tabs to spaces, since actual tab characters are
+" needed, and have indentation at 8 chars to be sure that all indents are
+" tabs (despite the mappings later):
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
