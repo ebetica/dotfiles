@@ -18,6 +18,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ciaranm/detectindent'
 
 
 " All of your Plugins must be added before the following line

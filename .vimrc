@@ -3,9 +3,9 @@
 """GENERAL CONFIG
 set number
 set relativenumber
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+" set tabstop=4
+" set shiftwidth=4
+" set softtabstop=4
 set smartindent
 set autoindent
 set expandtab
@@ -56,7 +56,8 @@ if filereadable(expand("~/dotfiles/vundles.vim"))
 endif
 
 " Semantic Highlight
-autocmd BufWrite,BufRead,InsertLeave *.c,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs :SemanticHighlight
+autocmd BufWrite,BufRead,InsertLeave *.c,*.cc,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs :SemanticHighlight
+autocmd BufEnter * :DetectIndent
 
 "NERDTree
 nnoremap <C-u> :NERDTreeToggle %<CR>
@@ -64,6 +65,10 @@ let NERDTreeQuitOnOpen=1
 
 "CtrlP
 nnoremap tn :CtrlPMixed<CR>
+let g:ctrlp_prompt_mappings = {
+      \ 'AcceptSelection("e")': ['<c-t>'],
+      \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+      \ }
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are
 " needed, and have indentation at 8 chars to be sure that all indents are
