@@ -12,6 +12,7 @@ set autoindent
 set expandtab
 set autoread            "Reload files changed outside of vim
 set visualbell          "No sounds
+set nowrap
 
 "Saves pinkies
 nnoremap ; :
