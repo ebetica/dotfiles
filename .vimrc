@@ -4,9 +4,6 @@
 syntax on
 set number
 set relativenumber
-" set tabstop=4
-" set shiftwidth=4
-" set softtabstop=4
 set smartindent
 set autoindent
 set expandtab
@@ -16,6 +13,9 @@ set nowrap
 
 "Saves pinkies
 nnoremap ; :
+
+"Leader
+let mapleader=" "
 
 
 """Visual niceties
@@ -62,7 +62,7 @@ autocmd BufWrite,BufRead,InsertLeave *.c,*.cc,*.cpp,*.h,*.hpp,*.java,*.js,*.php,
 autocmd BufEnter * :DetectIndent
 
 "NERDTree
-nnoremap <C-u> :NERDTreeToggle %<CR>
+nnoremap <leader>n :NERDTreeToggle %<CR>
 let NERDTreeQuitOnOpen=1
 
 "CtrlP
@@ -76,3 +76,9 @@ let g:ctrlp_prompt_mappings = {
 " needed, and have indentation at 8 chars to be sure that all indents are
 " tabs (despite the mappings later):
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+"Syntastic
+let g:syntastic_cpp_compiler_options=" -std=c++14 -Wall"
+let g:syntastic_always_populate_loc_list = 1
+nnoremap <leader>j :lnext<CR>
+nnoremap <leader>k :lprev<CR>
