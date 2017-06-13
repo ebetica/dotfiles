@@ -1,6 +1,7 @@
 
 
 """GENERAL CONFIG
+syntax on
 set number
 set relativenumber
 " set tabstop=4
@@ -56,7 +57,7 @@ if filereadable(expand("~/dotfiles/vundles.vim"))
 endif
 
 " Semantic Highlight
-autocmd BufWrite,BufRead,InsertLeave *.c,*.cc,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs :SemanticHighlight
+autocmd BufWrite,BufRead,InsertLeave *.c,*.cc,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs,*.lua :SemanticHighlight
 autocmd BufEnter * :DetectIndent
 
 "NERDTree
