@@ -41,8 +41,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Easy page up down
-nnoremap <C-j> <C-f>
-nnoremap <C-k> <C-b>
+nnoremap <C-j> <C-D>
+nnoremap <C-k> <C-U>
 
 
 """Searching
