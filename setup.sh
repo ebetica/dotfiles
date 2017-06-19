@@ -11,14 +11,18 @@ cp -f ~/.gitignore ~/.gitignore.backup
 mkdir -p ~/.oh-my-zsh/custom/themes
 (cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-syntax-highlighting)
 
-ln -s ~/dotfiles/ebetica.zsh-theme ~/.oh-my-zsh/custom/themes/
 ln -s ~/dotfiles/.vimrc ~/
 ln -s ~/dotfiles/.tmux.conf ~/
 ln -s ~/dotfiles/gitignore ~/.gitignore
+
+ln -s ~/dotfiles/ebetica.zsh-theme ~/.oh-my-zsh/custom/themes/
 echo "source /etc/profile" >> ~/.zshrc
 echo "source ~/dotfiles/.zshrc" >> ~/.zshrc
+
 echo "[include]" >> ~/.gitconfig
 echo " 	path = ~/dotfiles/gitconfig" >> ~/.gitconfig
+
+echo "#include \"$(readlink -f ./xresources/Xresources)\"" >> ~/.Xresources
 
 vim +PluginInstall +qall
 
