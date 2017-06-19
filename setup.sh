@@ -5,6 +5,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp -f ~/.vimrc ~/.vimrc.backup
 cp -f ~/.zshrc ~/.zshrc.backup
 cp -f ~/.tmux.conf ~/.tmux.conf.backup
+cp -f ~/.gitconfig ~/.gitconfig.backup
+cp -f ~/.gitignore ~/.gitignore.backup
 
 mkdir -p ~/.oh-my-zsh/custom/themes
 (cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-syntax-highlighting)
@@ -12,8 +14,11 @@ mkdir -p ~/.oh-my-zsh/custom/themes
 ln -s ~/dotfiles/ebetica.zsh-theme ~/.oh-my-zsh/custom/themes/
 ln -s ~/dotfiles/.vimrc ~/
 ln -s ~/dotfiles/.tmux.conf ~/
+ln -s ~/dotfiles/gitignore ~/.gitignore
 echo "source /etc/profile" >> ~/.zshrc
 echo "source ~/dotfiles/.zshrc" >> ~/.zshrc
+echo "[include]" >> ~/.gitconfig
+echo " 	path = ~/dotfiles/gitconfig" >> ~/.gitconfig
 
 vim +PluginInstall +qall
 
