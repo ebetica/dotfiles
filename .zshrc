@@ -17,6 +17,8 @@ bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+bindkey '^[[Z' reverse-menu-complete
+
 unset zle_bracketed_paste
 
 export EDITOR='vim'

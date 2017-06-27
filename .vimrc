@@ -51,6 +51,10 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
+"Better tab support for files
+set wildmode=longest,list,full
+set wildmenu
+
 
 """Vundles
 if filereadable(expand("~/dotfiles/vundles.vim"))
@@ -59,9 +63,10 @@ endif
 
 " Semantic Highlight
 autocmd BufWrite,BufRead,InsertLeave *.c,*.cc,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs,*.lua :SemanticHighlight
-autocmd BufEnter * :DetectIndent
+autocmd BufEnter,BufWrite * :DetectIndent
 
 "NERDTree
+let g:jedi#usages_command = "<leader>u"  " Unbinds leader-n
 nnoremap <leader>n :NERDTreeToggle %<CR>
 let NERDTreeQuitOnOpen=1
 
