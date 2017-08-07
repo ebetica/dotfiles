@@ -63,7 +63,6 @@ endif
 
 " Semantic Highlight
 autocmd BufWrite,BufRead,InsertLeave *.c,*.cc,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs,*.lua :SemanticHighlight
-autocmd BufEnter,BufWrite * :DetectIndent
 
 "NERDTree
 let g:jedi#usages_command = "<leader>u"  " Unbinds leader-n
