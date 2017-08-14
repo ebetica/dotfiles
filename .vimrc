@@ -86,5 +86,9 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 "Syntastic
 let g:syntastic_cpp_compiler_options=" -std=c++14 -Wall"
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_checkers = ['python']
 nnoremap <leader>j :lnext<CR>
 nnoremap <leader>k :lprev<CR>
+
+"Jedi
+let g:jedi#force_py_version = 3
