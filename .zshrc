@@ -18,6 +18,8 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 bindkey '^[[Z' reverse-menu-complete
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
 
 unset zle_bracketed_paste
 

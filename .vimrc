@@ -44,6 +44,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-j> <C-D>
 nnoremap <C-k> <C-U>
 
+"Folds
+set foldmethod=syntax
 
 """Searching
 set incsearch       " Find the next match as we type the search
