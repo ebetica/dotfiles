@@ -17,9 +17,9 @@ Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'ciaranm/detectindent'
 Plugin 'tpope/vim-sleuth'
 Plugin 'dracula/vim'
+Plugin 'Yggdroot/indentLine'
 
 
 " All of your Plugins must be added before the following line
