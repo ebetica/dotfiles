@@ -19,8 +19,8 @@ let mapleader=" "
 
 
 """Visual niceties
-set colorcolumn=81
-
+set colorcolumn=81,121
+hi ColorColumn ctermbg=darkgrey guibg=darkgrey 
 colorscheme default
 let g:lightline = {'colorscheme': 'default'}
 
