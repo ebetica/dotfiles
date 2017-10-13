@@ -92,3 +92,8 @@ nnoremap <leader>k :lprev<CR>
 
 "Jedi
 let g:jedi#force_py_version = 3
+
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window.
+autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
+autocmd InsertLeave * let &l:foldmethod=w:last_fdm

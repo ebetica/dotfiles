@@ -19,7 +19,6 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-sleuth'
 Plugin 'dracula/vim'
-Plugin 'Yggdroot/indentLine'
 
 
 " All of your Plugins must be added before the following line
