@@ -9,6 +9,7 @@ cp -f ~/.gitconfig ~/.gitconfig.backup
 cp -f ~/.gitignore ~/.gitignore.backup
 
 mkdir -p ~/.oh-my-zsh/custom/themes
+mkdir -p ~/.oh-my-zsh/custom/plugins
 (cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-syntax-highlighting)
 
 ln -s ~/dotfiles/.vimrc ~/

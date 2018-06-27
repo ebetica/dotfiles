@@ -20,7 +20,7 @@ let mapleader=" "
 
 """Visual niceties
 set colorcolumn=81,121
-hi ColorColumn ctermbg=darkgrey guibg=darkgrey 
+" hi ColorColumn ctermbg=darkgrey guibg=darkgrey 
 colorscheme default
 let g:lightline = {'colorscheme': 'default'}
 
@@ -46,6 +46,7 @@ nnoremap <C-k> <C-U>
 
 "Folds
 set foldmethod=syntax
+set foldlevelstart=4
 
 """Searching
 set incsearch       " Find the next match as we type the search
@@ -65,6 +66,7 @@ endif
 
 " Semantic Highlight
 autocmd BufWrite,BufRead,InsertLeave *.c,*.cc,*.cpp,*.h,*.hpp,*.java,*.js,*.php,*.py,*.rb,*.rs,*.lua :SemanticHighlight
+let g:semanticTermColors = [146, 252, 227, 215, 253, 69, 84, 177, 15, 191, 210, 254, 114, 155, 219, 117, 228, 7, 140, 192, 205, 218, 87, 183, 222, 213, 181, 250, 182, 115, 204, 152, 119, 223, 231, 151, 189, 158, 194, 145, 63, 120, 248, 175, 150, 221, 110, 230, 116, 251, 153, 81, 217, 141, 186, 123, 174, 176, 83, 224, 121, 203, 195, 171, 188, 86, 159, 209, 229, 247, 105, 216, 255, 212, 157, 225, 135, 111, 122, 99, 180, 156, 104, 193, 75, 207, 206, 249, 187, 211, 85, 147]
 
 "NERDTree
 let g:jedi#usages_command = "<leader>u"  " Unbinds leader-n
