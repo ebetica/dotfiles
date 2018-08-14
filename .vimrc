@@ -11,6 +11,13 @@ set autoread            "Reload files changed outside of vim
 set visualbell          "No sounds
 set nowrap
 
+" undofile
+if !isdirectory("$HOME/.cache/vim-undo")
+  call mkdir("$HOME/.cache/vim-undo", "p")
+endif
+set undofile
+set undodir=~/.cache/vim-undo
+
 "Saves pinkies
 nnoremap ; :
 
