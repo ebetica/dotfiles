@@ -21,6 +21,9 @@ bindkey '^[[Z' reverse-menu-complete
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 unset zle_bracketed_paste
 
 export EDITOR='vim'
