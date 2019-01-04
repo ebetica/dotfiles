@@ -5,7 +5,7 @@ source /etc/profile
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="ebetica"
 plugins=(git archlinux aws brew common-aliases docker gitfast mercurial lwd pip 
-  sudo vi-mode web-search history-substring-search zsh-syntax-highlighting)
+  sudo vi-mode web-search history-substring-search zsh-syntax-highlighting fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,7 +26,7 @@ bindkey "^[[1;5D" backward-word
 
 unset zle_bracketed_paste
 
-export EDITOR='vim'
+export EDITOR='kak'
 
 alias -g X='| xargs -n 1 -I %'
 fortune
