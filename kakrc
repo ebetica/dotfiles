@@ -14,8 +14,6 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
 lsp-auto-hover-enable
 
-set global ycmd_path /private/home/misterabc/kak/ycmd/ycmd
-
 map global normal = '|clang-format-8<ret>'
 map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
 
