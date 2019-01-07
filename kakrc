@@ -10,16 +10,19 @@ map global user e %{
     :set-option global fzf_file_command 'fd'<ret>
 }
 
+plug "andreyorst/smarttab.kak"
+set global smarttab_mode "expandtab"
+
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
-lsp-auto-hover-enable
 
-map global normal = '|clang-format-8<ret>'
+map global normal = '<a-x>|clang-format-8<ret>'
 map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
 
 map global user f ':fzf-mode<ret>'
 map global user a ':alt<ret>'
 map global user , ':lsp-hover<ret>'
+map global normal D ':lsp-find-error<ret>l'
 
 hook global InsertCompletionShow .* %{
     try %{
