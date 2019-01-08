@@ -22,7 +22,9 @@ map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
 map global user f ':fzf-mode<ret>'
 map global user a ':alt<ret>'
 map global user , ':lsp-hover<ret>'
-map global normal D ':lsp-find-error<ret>l'
+map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
+
+hook global WinCreate .* %{ addhl show_matching }
 
 hook global InsertCompletionShow .* %{
     try %{
