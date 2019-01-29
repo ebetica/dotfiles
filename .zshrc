@@ -9,6 +9,8 @@ plugins=(git archlinux aws brew common-aliases docker gitfast mercurial lwd pip
 
 source $ZSH/oh-my-zsh.sh
 
+setopt hist_ignore_all_dups
+
 # User Configeration
 
 ## history-substring-search

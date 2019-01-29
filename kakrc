@@ -14,9 +14,11 @@ plug "andreyorst/smarttab.kak"
 set global smarttab_mode "expandtab"
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
+# nop %sh{ (kak-lsp -s $kak_session -vvv ) > /tmp/kak-lsp.log 2>&1 < /dev/null & }
 lsp-enable
 
-map global normal = '<a-x>|clang-format-8<ret>'
+map global normal = ':format<ret>'
+map global normal * <a-i>w*
 map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
 
 map global user f ':fzf-mode<ret>'
@@ -24,7 +26,7 @@ map global user a ':alt<ret>'
 map global user , ':lsp-hover<ret>'
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 
-hook global WinCreate .* %{ addhl show_matching }
+hook global WinCreate .* %{ addhl window/ show-matching }
 
 hook global InsertCompletionShow .* %{
     try %{
@@ -42,4 +44,7 @@ hook global InsertCompletionHide .* %{
     unmap window insert <s-tab> <c-p>
 }
 
+hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-8 -assume-filename ${kak_buffile}' }
+
 add-highlighter global/ number-lines -relative
+face global MenuBackground bright-blue
