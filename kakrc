@@ -10,8 +10,13 @@ map global user e %{
     :set-option global fzf_file_command 'fd'<ret>
 }
 
-plug "andreyorst/smarttab.kak"
-set global smarttab_mode "expandtab"
+plug "andreyorst/smarttab.kak" %{
+    set-option global softtabstop 4
+    set-option global tabstop 4
+    hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
+}
+
+set global termcmd 'gnome-terminal -e '
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
 # nop %sh{ (kak-lsp -s $kak_session -vvv ) > /tmp/kak-lsp.log 2>&1 < /dev/null & }
@@ -44,7 +49,10 @@ hook global InsertCompletionHide .* %{
     unmap window insert <s-tab> <c-p>
 }
 
-hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-8 -assume-filename ${kak_buffile}' }
+hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -assume-filename ${kak_buffile}' }
+hook global WinSetOption filetype=python %{ set window formatcmd 'black -' }
 
 add-highlighter global/ number-lines -relative
 face global MenuBackground bright-blue
+
+set global scrolloff 10,10

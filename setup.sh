@@ -23,7 +23,7 @@ echo "source ~/dotfiles/.zshrc" >> ~/.zshrc
 echo "[include]" >> ~/.gitconfig
 echo " 	path = ~/dotfiles/gitconfig" >> ~/.gitconfig
 
-echo "#include \"$(readlink -f ./xresources/Xresources)\"" >> ~/.Xresources
+echo "#include \"$(readlink -f ./Xresources)\"" >> ~/.Xresources
 
 vim +PluginInstall +qall
 

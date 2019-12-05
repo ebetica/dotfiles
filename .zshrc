@@ -31,4 +31,5 @@ unset zle_bracketed_paste
 export EDITOR='kak'
 
 alias -g X='| xargs -n 1 -I %'
+alias googler='BROWSER=lynx googler'
 fortune
