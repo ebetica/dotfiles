@@ -8,6 +8,9 @@ cp -f ~/.tmux.conf ~/.tmux.conf.backup
 cp -f ~/.gitconfig ~/.gitconfig.backup
 cp -f ~/.gitignore ~/.gitignore.backup
 
+mkdir -p ~/.config/kak
+cp -f ~/.config/kak/kakrc ~/.config/kak/kakrc.backup
+
 mkdir -p ~/.oh-my-zsh/custom/themes
 mkdir -p ~/.oh-my-zsh/custom/plugins
 (cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-syntax-highlighting)
@@ -15,6 +18,7 @@ mkdir -p ~/.oh-my-zsh/custom/plugins
 ln -s ~/dotfiles/.vimrc ~/
 ln -s ~/dotfiles/.tmux.conf ~/
 ln -s ~/dotfiles/gitignore ~/.gitignore
+ln -s ~/dotfiles/kakrc ~/.config/kak/kakrc
 
 ln -s ~/dotfiles/ebetica.zsh-theme ~/.oh-my-zsh/custom/themes/
 echo "source /etc/profile" >> ~/.zshrc
