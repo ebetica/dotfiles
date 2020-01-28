@@ -64,7 +64,7 @@ XTerm*numColorRegisters: 256
 
 XTerm*renderFont: true
 xterm*faceName: Inconsolata
-xterm*faceSize: 14
+xterm*faceSize: 13
 
 !! Ctrl-Shift-C/V copypaste 
 XTerm*vt100.translations: #override \
