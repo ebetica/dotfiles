@@ -11,6 +11,9 @@ cp -f ~/.i3/config ~/.i3/config.backup
 
 mkdir -p ~/.config/kak
 cp -f ~/.config/kak/kakrc ~/.config/kak/kakrc.backup
+# plug.kak
+mkdir -p ~/.config/kak/plugins/
+git clone https://github.com/andreyorst/plug.kak.git ~/.config/kak/plugins/plug.kak
 
 mkdir -p ~/.oh-my-zsh/custom/themes
 mkdir -p ~/.oh-my-zsh/custom/plugins
