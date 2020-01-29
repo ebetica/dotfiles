@@ -32,4 +32,11 @@ export EDITOR='kak'
 
 alias -g X='| xargs -n 1 -I %'
 alias googler='BROWSER=lynx googler'
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add
+fi
+trap 'test -n "$SSH_AUTH_SOCK" && eval `/usr/bin/ssh-agent -k`' 0
+
 fortune
