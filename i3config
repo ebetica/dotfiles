@@ -289,6 +289,7 @@ exec --no-startup-id xset r rate 200 50
 exec --no-startup-id setxkbmap -option "caps:swapescape"
 exec --no-startup-id redshift -l geoclue2 -m randr
 exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id udiskie -s
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

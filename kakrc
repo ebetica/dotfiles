@@ -1,22 +1,21 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
-plug "andreyorst/fzf.kak"
-set-option global fzf_file_command 'fd'
+plug 'delapouite/kakoune-livedown'
 
-map global user e %{
-    :evaluate-commands %sh{ echo "set-option global fzf_file_command 'fd --type f --follow . $(dirname $kak_bufname)'" }<ret>
-    :echo -debug %opt{fzf_file_command}<ret>
-    :fzf-mode<ret>f
-    :set-option global fzf_file_command 'fd'<ret>
+plug "andreyorst/fzf.kak" defer "fzf" %{
+    set-option global fzf_file_command 'fd'
+    map global user e %{
+        :echo -debug %opt{fzf_file_command}<ret>
+        :fzf-mode<ret>f
+        :set-option global fzf_file_command 'fd --type f --follow . $(dirname $kak_bufname)'<ret>
+    }
 }
 
+
 plug "andreyorst/smarttab.kak" %{
-    set-option global softtabstop 4
     set-option global tabstop 4
     hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
 }
-
-set global termcmd 'gnome-terminal -e '
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
 # nop %sh{ (kak-lsp -s $kak_session -vvv ) > /tmp/kak-lsp.log 2>&1 < /dev/null & }
