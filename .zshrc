@@ -4,7 +4,7 @@ source /etc/profile
 
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="ebetica"
-plugins=(git archlinux aws brew common-aliases docker gitfast mercurial lwd pip 
+plugins=(git archlinux aws brew common-aliases docker gitfast mercurial last-working-directory pip
   sudo vi-mode web-search history-substring-search zsh-syntax-highlighting fzf z)
 
 source $ZSH/oh-my-zsh.sh
