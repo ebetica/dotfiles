@@ -78,5 +78,7 @@ XTerm*vt100.translations: #override \
 
 ! Alt key codes
 XTerm*metaSendsEscape: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
 
 XTerm.fullscreen: never
