@@ -7,3 +7,6 @@
 [submodule "3rdparty/hub"]
 	path = 3rdparty/hub
 	url = https://github.com/github/hub
+[submodule "3rdparty/conda-zsh-completion"]
+	path = 3rdparty/conda-zsh-completion
+	url = https://github.com/esc/conda-zsh-completion
