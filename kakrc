@@ -13,8 +13,11 @@ plug "andreyorst/fzf.kak" defer "fzf" %{
     }
 }
 
-plug "andreyorst/smarttab.kak" %{
+plug "andreyorst/smarttab.kak" defer smarttab %{
     set-option global tabstop 4
+    set-option global softtabstop 4
+} config %{
+    hook global WinSetOption filetype=(makefile|gas) noexpandtab
     hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
 }
 
