@@ -16,6 +16,8 @@ ubuntu web-search z zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
+fpath=("$ZSH_CUSTOM/completions" $fpath)
+autoload -U compinit && compinit
 
 setopt hist_ignore_all_dups
 
