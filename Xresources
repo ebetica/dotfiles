@@ -80,5 +80,7 @@ XTerm*vt100.translations: #override \
 XTerm*metaSendsEscape: true
 XTerm.vt100.backarrowKey: false
 XTerm.ttyModes: erase ^?
+XTerm*on3Clicks: regex [^[:space:]]+
+XTerm*on4Clicks: line
 
 XTerm.fullscreen: never

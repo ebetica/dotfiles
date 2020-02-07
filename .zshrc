@@ -3,9 +3,17 @@ source /etc/profile
 # Oh My ZSH config
 
 export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM="$(dirname ${(%):-%x})/zsh_custom"
 ZSH_THEME="ebetica"
-plugins=(git archlinux aws brew common-aliases docker gitfast mercurial last-working-dir pip
-  sudo vi-mode web-search history-substring-search zsh-syntax-highlighting fzf z)
+plugins=(
+# These plugins conflict, do it in this order
+vi-mode
+# make sure vi-mode is first
+archlinux cargo colored-man-pages common-aliases dirhistory docker fd
+fzf fzf-z gem git git-auto-fetch gitfast github history-substring-search
+last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
+ubuntu web-search z zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,6 +41,7 @@ bindkey "^[[3~" 	delete-char
 unset zle_bracketed_paste
 
 export EDITOR='kak'
+if hash hub; then alias git='hub'; fi
 
 alias -g X='| xargs -n 1 -I %'
 alias googler='BROWSER=lynx googler'

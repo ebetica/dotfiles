@@ -1,0 +1,9 @@
+[submodule "zsh_custom/plugins/fzf-z"]
+	path = zsh_custom/plugins/fzf-z
+	url = https://github.com/andrewferrier/fzf-z
+[submodule "zsh_custom/plugins/zsh-syntax-highlighting"]
+	path = zsh_custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "3rdparty/hub"]
+	path = 3rdparty/hub
+	url = https://github.com/github/hub
