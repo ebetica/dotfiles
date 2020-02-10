@@ -7,10 +7,10 @@ export ZSH_CUSTOM="$(dirname ${(%):-%x})/zsh_custom"
 ZSH_THEME="ebetica"
 plugins=(
 # These plugins conflict, do it in this order
-vi-mode
+vi-mode git
 # make sure vi-mode is first
 archlinux cargo colored-man-pages common-aliases dirhistory docker fd
-fzf fzf-z gem git git-auto-fetch gitfast github history-substring-search
+fzf fzf-z gem git-auto-fetch gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
 ubuntu web-search z zsh-syntax-highlighting
 )
