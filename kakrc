@@ -56,5 +56,6 @@ hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -a
 hook global WinSetOption filetype=python %{ set window formatcmd 'black -' }
 
 add-highlighter global/ number-lines -relative
+face global MenuBackground default,black
 
 set global scrolloff 10,10

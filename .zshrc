@@ -43,6 +43,7 @@ bindkey "^[[3~" 	delete-char
 unset zle_bracketed_paste
 
 export EDITOR='kak'
+export GIT_EDITOR='kak'
 if hash hub; then alias git='hub'; fi
 
 alias -g X='| xargs -n 1 -I %'
