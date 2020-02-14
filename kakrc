@@ -34,7 +34,7 @@ map global user a ':alt<ret>'
 map global user , ':lsp-hover<ret>'
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
-map global normal <singlequote> \;
+map global normal <semicolon> \;
 
 hook global WinCreate .* %{ addhl window/ show-matching }
 
