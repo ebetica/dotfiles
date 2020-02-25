@@ -48,6 +48,7 @@ if hash hub; then alias git='hub'; fi
 
 alias -g X='| xargs -n 1 -I %'
 alias googler='BROWSER=lynx googler'
+unalias fd
 
 eval `keychain --eval --agents ssh id_rsa`
 
