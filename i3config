@@ -100,8 +100,8 @@ bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
 bindsym $mod+g split h;exec notify-send 'tile horizontally'
@@ -300,6 +300,8 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id udiskie -s
 exec_always xset r rate 175 30
 exec_always xset m 3 5
+
+bindsym $mod+p exec setxkbmap -option "caps:swapescape"; exec xset r rate 175 30; exec xset m 3 5
 
 for_window [instance="__scratchpad"] move scratchpad 
 exec --no-startup-id zeal -name __scratchpad
