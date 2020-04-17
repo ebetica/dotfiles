@@ -25,6 +25,14 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 # nop %sh{ (kak-lsp -s $kak_session -vvv ) > /tmp/kak-lsp.log 2>&1 < /dev/null & }
 lsp-enable
 
+plug "h-youhei/kakoune-surround"
+declare-user-mode surround
+map global surround s ':surround<ret>' -docstring 'surround'
+map global surround c ':change-surround<ret>' -docstring 'change'
+map global surround d ':delete-surround<ret>' -docstring 'delete'
+map global surround t ':select-surrounding-tag<ret>' -docstring 'select tag'
+map global normal '<c-r>' ':enter-user-mode surround<ret>'
+
 map global normal = ':format<ret>'
 map global normal * <a-i>w*
 map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
