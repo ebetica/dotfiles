@@ -6,11 +6,11 @@ plug 'delapouite/kakoune-livedown' %{
 plug "andreyorst/fzf.kak" config %{
     require-module fzf
     map global user e %{
-        :fzf -items-cmd "fd --type f -L . $(dirname %val{bufname})"<ret>
+        :fzf -kak-cmd %{edit -existing} -preview -items-cmd "fd --type f -L . $(dirname %val{bufname})"<ret>
     }
 } defer fzf %{
     set-option global fzf_file_command 'fd'
-} demand
+}
 
 plug "andreyorst/smarttab.kak" defer smarttab %{
     set-option global tabstop 4
