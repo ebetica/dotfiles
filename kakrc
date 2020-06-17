@@ -1,17 +1,16 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
-
 plug 'delapouite/kakoune-livedown' %{
-    set-option global livedown_browser 'firefox --new-window'
+   set-option global livedown_browser 'firefox --new-window'
 }
 
-plug "andreyorst/fzf.kak" defer "fzf" %{
-    set-option global fzf_file_command 'fd'
+plug "andreyorst/fzf.kak" config %{
+    require-module fzf
     map global user e %{
-        :echo -debug %opt{fzf_file_command}<ret>
-        :fzf-mode<ret>f
-        :set-option global fzf_file_command 'fd --type f --follow . $(dirname $kak_bufname)'<ret>
+        :fzf -items-cmd "fd --type f -L . $(dirname %val{bufname})"<ret>
     }
-}
+} defer fzf %{
+    set-option global fzf_file_command 'fd'
+} demand
 
 plug "andreyorst/smarttab.kak" defer smarttab %{
     set-option global tabstop 4
