@@ -49,6 +49,7 @@ if hash hub; then alias git='hub'; fi
 alias -g X='| xargs -n 1 -I %'
 alias googler='BROWSER=lynx googler'
 alias icat='img2sixel'
+alias pdr='pyscrun -mipdb -cc'
 unalias fd
 
 eval `keychain --eval --agents ssh id_rsa`
