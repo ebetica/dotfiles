@@ -62,7 +62,7 @@ hook global InsertCompletionHide .* %{
 }
 
 hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -assume-filename ${kak_buffile}' }
-hook global WinSetOption filetype=python %{ set window formatcmd 'black -' }
+hook global WinSetOption filetype=python %{ set window formatcmd 'isort --profile=black - | black -' }
 
 add-highlighter global/ number-lines -relative
 face global MenuBackground default,black
