@@ -10,6 +10,7 @@ cp -f ~/.gitignore ~/.gitignore.backup
 cp -f ~/.i3/config ~/.i3/config.backup
 
 mkdir -p ~/.config/kak
+mkdir -p ~/.config/.i3
 cp -f ~/.config/kak/kakrc ~/.config/kak/kakrc.backup
 # plug.kak
 mkdir -p ~/.config/kak/plugins/
@@ -19,7 +20,7 @@ ln -sf ~/dotfiles/.vimrc ~/
 ln -sf ~/dotfiles/.tmux.conf ~/
 ln -sf ~/dotfiles/gitignore ~/.gitignore
 ln -sf ~/dotfiles/kakrc ~/.config/kak/kakrc
-ln -sf ~/dotfiles/i3config ~/.i3/config
+ln -sf ~/dotfiles/i3config ~/.config/.i3/config
 
 echo "source /etc/profile" >> ~/.zshrc
 echo "source ~/dotfiles/.zshrc" >> ~/.zshrc

@@ -84,3 +84,4 @@ XTerm*on3Clicks: regex [^[:space:]]+
 XTerm*on4Clicks: line
 
 XTerm.fullscreen: never
+XTerm.vt100.scrollBar: false
