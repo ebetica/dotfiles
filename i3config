@@ -4,6 +4,10 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
+# Set monitors
+set $primary eDP1
+set $secondary HDMI2
+
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
@@ -54,8 +58,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -71,6 +75,11 @@ bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# Volume
+bindsym XF86AudioRaiseVolume exec "notify-send Volume\ is\ now\ $(amixer sset Master,0 2%+ | grep -oP '\d\d\%' | head -n 1)"
+bindsym XF86AudioLowerVolume exec "notify-send Volume\ is\ now\ $(amixer sset Master,0 2%- | grep -oP '\d\d\%' | head -n 1)"
+bindsym XF86AudioMute exec "notify-send Volume\ is\ $(amixer sset Master,0 toggle | grep -oP '\[(on|off)\]' | head -n1)"
 
 # focus_follows_mouse no
 
@@ -102,6 +111,7 @@ bindsym $mod+Shift+Right move right
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+x move workspace to output up
 
 # split orientation
 bindsym $mod+g split h;exec notify-send 'tile horizontally'
@@ -276,6 +286,19 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+# Multi-monitor suppor                               t
+bindsym $mod+o mode "output"
+mode "output" {
+	bindsym o exec --no-startup-id xrandr -s 0                                                                                , mode "default"
+	bindsym p exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --above $primary          , mode "default"
+	bindsym d exec --no-startup-id xrandr --output $primary --auto              --output $secondary --above $primary --primary, mode "default"
+	bindsym m exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --same-as $primary        , mode "default"
+
+        # exit resize mode: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 # Lock screen
 # bindsym $mod+9 exec --no-startup-id blurlock
 
@@ -296,7 +319,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id setxkbmap -option "caps:swapescape"
 exec --no-startup-id redshift -l geoclue2 -m randr
-exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id dropbox start
 exec --no-startup-id udiskie -s
 exec_always xset r rate 175 30
 exec_always xset m 3 5
