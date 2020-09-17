@@ -4,7 +4,7 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-# Set monitors
+# Set Screen
 set $primary eDP1
 set $secondary HDMI2
 
@@ -290,9 +290,9 @@ mode "resize" {
 bindsym $mod+o mode "output"
 mode "output" {
 	bindsym o exec --no-startup-id xrandr -s 0                                                                                , mode "default"
-	bindsym p exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --above $primary          , mode "default"
-	bindsym d exec --no-startup-id xrandr --output $primary --auto              --output $secondary --above $primary --primary, mode "default"
-	bindsym m exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --same-as $primary        , mode "default"
+	bindsym p exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --auto --above $primary                , mode "default"
+	bindsym d exec --no-startup-id xrandr --output $primary --auto              --output $secondary --auto --above $primary --primary      , mode "default"
+	bindsym m exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --auto --same-as $primary              , mode "default"
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
