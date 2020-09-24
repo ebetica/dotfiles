@@ -289,10 +289,10 @@ mode "resize" {
 # Multi-monitor suppor                               t
 bindsym $mod+o mode "output"
 mode "output" {
-	bindsym o exec --no-startup-id xrandr -s 0                                                                                , mode "default"
-	bindsym p exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --auto --above $primary                , mode "default"
-	bindsym d exec --no-startup-id xrandr --output $primary --auto              --output $secondary --auto --above $primary --primary      , mode "default"
-	bindsym m exec --no-startup-id xrandr --output $primary --auto --primary    --output $secondary --auto --same-as $primary              , mode "default"
+	bindsym o exec xrandr -s 0 --auto                                                                                , mode "default"
+	bindsym p exec xrandr --output $primary --auto --primary    --output $secondary --auto --above $primary                , mode "default"
+	bindsym d exec xrandr --output $primary --auto              --output $secondary --auto --above $primary --primary      , mode "default"
+	bindsym m exec xrandr --output $primary --auto --primary    --output $secondary --auto --same-as $primary              , mode "default"
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
