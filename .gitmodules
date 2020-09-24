@@ -13,3 +13,6 @@
 [submodule "3rdparty/tealdeer"]
 	path = 3rdparty/tealdeer
 	url = https://github.com/dbrgn/tealdeer
+[submodule "zsh_custom/plugins/zsh-z"]
+	path = zsh_custom/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z
