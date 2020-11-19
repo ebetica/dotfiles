@@ -18,10 +18,12 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
 } config %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab
     hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
+    hook global WinSetOption filetype=(yaml|json) tabstop 2
+    hook global WinSetOption filetype=(yaml|json) softtabstop 2
 }
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
-# nop %sh{ (kak-lsp -s $kak_session -vvv ) > /tmp/kak-lsp.log 2>&1 < /dev/null & }
+# set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 lsp-enable
 
 plug "h-youhei/kakoune-surround"
