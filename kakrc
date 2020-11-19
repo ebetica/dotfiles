@@ -18,8 +18,8 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
 } config %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab
     hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
-    hook global WinSetOption filetype=(yaml|json) tabstop 2
-    hook global WinSetOption filetype=(yaml|json) softtabstop 2
+    hook global WinSetOption filetype=(yaml|json) %{ set-option window tabstop 2 }
+    hook global WinSetOption filetype=(yaml|json) %{ set-option window softtabstop 2 }
 }
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
