@@ -70,3 +70,7 @@ add-highlighter global/ number-lines -relative
 face global MenuBackground default,black
 
 set global scrolloff 10,10
+
+# hacky-workaround to get linefeeds into paste buffers
+# Credit to @cole-h
+execute-keys ':set-register p "        __import__(''ipdb'').set_trace()<c-v><ret>"<ret>'
