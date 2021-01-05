@@ -64,13 +64,15 @@ hook global InsertCompletionHide .* %{
 }
 
 hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -assume-filename ${kak_buffile}' }
-hook global WinSetOption filetype=python %{ set window formatcmd 'isort --profile=black - | black -' }
+hook global WinSetOption filetype=python %{
+    set window formatcmd 'isort --profile=black - | black -'
+    # hacky-workaround to get linefeeds into paste buffers
+    # Credit to @cole-h
+    execute-keys ':set-register p "        __import__(''ipdb'').set_trace()<c-v><ret>"<ret>'
+}
 
 add-highlighter global/ number-lines -relative
 face global MenuBackground default,black
 
 set global scrolloff 10,10
 
-# hacky-workaround to get linefeeds into paste buffers
-# Credit to @cole-h
-execute-keys ':set-register p "        __import__(''ipdb'').set_trace()<c-v><ret>"<ret>'
