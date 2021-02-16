@@ -147,3 +147,4 @@ bind gk scrollto 0
 " Blacklists
 blacklistadd keep.google.com
 blacklistadd mail.google.com
+blacklistadd wolframcloud.com

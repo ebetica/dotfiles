@@ -58,6 +58,9 @@ export EDITOR='kak'
 export GIT_EDITOR='kak'
 if command -v hub &> /dev/null; then alias git='hub'; fi
 
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+
 alias -g X='| xargs -n 1 -I %'
 alias googler='BROWSER=lynx googler'
 alias icat='img2sixel'
