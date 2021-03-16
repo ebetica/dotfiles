@@ -1,46 +1,57 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "andreyorst/plug.kak" noload
 plug 'delapouite/kakoune-livedown' %{
    set-option global livedown_browser 'firefox --new-window'
 }
 
 plug "andreyorst/fzf.kak" config %{
     require-module fzf
-    map global user e %{
+    map global user -docstring "Search only in the subdirectory of this file" e %{
         :fzf -kak-cmd %{edit -existing} -preview -items-cmd "fd --type f -L . $(dirname %val{bufname})"<ret>
     }
-} defer fzf %{
-    set-option global fzf_file_command 'fd'
-}
+    map global user -docstring "Search hidden + gitignored files as well" a %{
+        :fzf -kak-cmd %{edit -existing} -preview -items-cmd "fd --type f -L -H"<ret>
+    }
+    set-option global fzf_file_command 'fd -L --type f'
+} 
 
-plug "andreyorst/smarttab.kak" defer smarttab %{
-    set-option global tabstop 4
-    set-option global softtabstop 4
-} config %{
+plug "andreyorst/smarttab.kak" config %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab
     hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
     hook global WinSetOption filetype=(yaml|json) %{ set-option window tabstop 2 }
     hook global WinSetOption filetype=(yaml|json) %{ set-option window softtabstop 2 }
+} defer "smarttab" %{
+    echo -debug "smarttab"
+    set-option global tabstop 4
+    set-option global softtabstop 4
 }
 
-eval %sh{kak-lsp --kakoune -s $kak_session}
-# set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
-lsp-enable
+
+plug "ebetica/kak-lsp" do %{
+    cargo install --locked --force --path .
+}
+set global lsp_cmd "kak-lsp -s %val{session} -vvvvv --log /tmp/kak-lsp.log"
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+    lsp-enable-window
+}
+set-option global lsp_auto_highlight_references true
 
 plug "h-youhei/kakoune-surround"
 declare-user-mode surround
 map global surround s ':surround<ret>' -docstring 'surround'
+map global surround v ':select-surround<ret>' -docstring 'select'
 map global surround c ':change-surround<ret>' -docstring 'change'
 map global surround d ':delete-surround<ret>' -docstring 'delete'
 map global surround t ':select-surrounding-tag<ret>' -docstring 'select tag'
-map global normal '<c-r>' ':enter-user-mode surround<ret>'
+map global normal 'v' ':enter-user-mode surround<ret>'
 
 map global normal = ':format<ret>'
 map global normal * <a-i>w*
 map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
 
 map global user f ':fzf-mode<ret>'
-map global user a ':alt<ret>'
 map global user , ':lsp-hover<ret>'
+map global user l ':enter-user-mode lsp<ret>'
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
@@ -64,6 +75,8 @@ hook global InsertCompletionHide .* %{
 }
 
 hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -assume-filename ${kak_buffile}' }
+hook global WinSetOption filetype=rust %{ set window formatcmd 'rustfmt' }
+hook global WinSetOption filetype=json %{ set window formatcmd 'jq .' }
 hook global WinSetOption filetype=python %{
     set window formatcmd 'isort --profile=black - | black -'
     # hacky-workaround to get linefeeds into paste buffers
