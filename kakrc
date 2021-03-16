@@ -13,7 +13,12 @@ plug "andreyorst/fzf.kak" config %{
         :fzf -kak-cmd %{edit -existing} -preview -items-cmd "fd --type f -L -H"<ret>
     }
     set-option global fzf_file_command 'fd -L --type f'
-} 
+}
+
+plug "ul/kak-tree" do %{
+    cargo install --path . --force --features "rust python html javascript typescript cpp c bash json"
+}
+
 
 plug "andreyorst/smarttab.kak" config %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab
@@ -30,20 +35,26 @@ plug "andreyorst/smarttab.kak" config %{
 plug "ebetica/kak-lsp" do %{
     cargo install --locked --force --path .
 }
-set global lsp_cmd "kak-lsp -s %val{session} -vvvvv --log /tmp/kak-lsp.log"
+# set global lsp_cmd "kak-lsp -s %val{session} -vvvvv --log /tmp/kak-lsp.log"
 hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
     lsp-enable-window
 }
 set-option global lsp_auto_highlight_references true
 
 plug "h-youhei/kakoune-surround"
-declare-user-mode surround
-map global surround s ':surround<ret>' -docstring 'surround'
-map global surround v ':select-surround<ret>' -docstring 'select'
-map global surround c ':change-surround<ret>' -docstring 'change'
-map global surround d ':delete-surround<ret>' -docstring 'delete'
-map global surround t ':select-surrounding-tag<ret>' -docstring 'select tag'
-map global normal 'v' ':enter-user-mode surround<ret>'
+declare-user-mode plugin
+map global plugin s ':surround<ret>' -docstring 'surround'
+map global plugin v ':select-surround<ret>' -docstring 'surround select'
+map global plugin c ':change-surround<ret>' -docstring 'surround change'
+map global plugin d ':delete-surround<ret>' -docstring 'surround delete'
+map global plugin t ':select-surrounding-tag<ret>' -docstring 'surround select tag'
+
+map global plugin j ':tree-select-next-node<ret>' -docstring 'ast next'
+map global plugin k ':tree-select-previous-node<ret>' -docstring 'ast prev'
+map global plugin h ':tree-select-parent-node<ret>' -docstring 'ast parents'
+map global plugin l ':tree-select-first-child<ret>' -docstring 'ast child'
+map global plugin L ':tree-select-children<ret>' -docstring 'ast children'
+map global normal 'v' ':enter-user-mode plugin<ret>'
 
 map global normal = ':format<ret>'
 map global normal * <a-i>w*
