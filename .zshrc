@@ -5,6 +5,7 @@ source /etc/profile
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM="$(dirname ${(%):-%x})/zsh_custom"
 ZSH_THEME="ebetica"
+export _Z_MAX_SCORE=100000
 plugins=(
 # These plugins conflict, do it in this order
 vi-mode git
