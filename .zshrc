@@ -11,7 +11,7 @@ plugins=(
 vi-mode git
 # make sure vi-mode is first
 archlinux cargo colored-man-pages common-aliases dirhistory docker fd
-fzf fzf-z gem git-auto-fetch gitfast github history-substring-search
+fzf fzf-z gem gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
 ubuntu web-search z zsh-syntax-highlighting
 )

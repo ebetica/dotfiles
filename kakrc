@@ -16,6 +16,7 @@ plug "andreyorst/fzf.kak" config %{
 }
 
 plug "ul/kak-tree" do %{
+    git submodule update --init --recursive
     cargo install --path . --force --features "rust python html javascript typescript cpp c bash json"
 }
 
