@@ -73,6 +73,7 @@ alias pdr='pyscrun -mipdb -cc'
 alias tcopy='tmux loadb -'
 alias tpaste='tmux saveb -'
 alias sq='squeue -u $USER -o "%.18i %.9P %.80j %.8u %.2t %.10M %.6D %R"'
+alias S='singularity'
 unalias fd
 
 eval `keychain --eval --agents ssh id_rsa`
