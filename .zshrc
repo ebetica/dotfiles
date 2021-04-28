@@ -69,13 +69,17 @@ export PATH="$HOME/gems/bin:$PATH"
 alias -g X='| xargs -n 1 -I %'
 alias googler='BROWSER=lynx googler'
 alias icat='img2sixel'
-alias pdr='pyscrun -mipdb -cc'
+alias -g pdr='$(which pyscrun) -mipdb -cc'
 alias tcopy='tmux loadb -'
 alias tpaste='tmux saveb -'
 alias sq='squeue -u $USER -o "%.18i %.9P %.80j %.8u %.2t %.10M %.6D %R"'
 unalias fd
 
 export SINGULARITYENV_PS1="Singularity:%/> "
+
+mb() { [ -d $1 ] && echo "$1" }
+export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/opt/slurm' mb '/opt/etc' mb '/etc/munge' mb '/usr/lib64' mb '/var/run') | paste -sd,)
+unset -f mb
 alias S='singularity'
 
 eval `keychain --eval --agents ssh id_rsa`

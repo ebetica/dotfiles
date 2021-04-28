@@ -89,6 +89,7 @@ hook global InsertCompletionHide .* %{
 hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -assume-filename ${kak_buffile}' }
 hook global WinSetOption filetype=rust %{ set window formatcmd 'rustfmt' }
 hook global WinSetOption filetype=json %{ set window formatcmd 'jq .' }
+hook global WinSetOption filetype=xml %{ set window formatcmd 'xmllint --format -' }
 hook global WinSetOption filetype=python %{
     set window formatcmd 'isort --profile=black - | black -'
     # hacky-workaround to get linefeeds into paste buffers
