@@ -78,7 +78,7 @@ unalias fd
 export SINGULARITYENV_PS1="Singularity:%/> "
 
 mb() { [ -d $1 ] && echo "$1" }
-export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/opt/slurm' mb '/opt/etc' mb '/etc/munge' mb '/usr/lib64' mb '/var/run') | paste -sd,)
+export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/opt/slurm'; mb '/opt/etc'; mb '/etc/munge'; mb '/usr/lib64'; mb '/var/run') | paste -sd,)
 unset -f mb
 alias S='singularity'
 
