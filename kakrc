@@ -37,10 +37,19 @@ plug "ebetica/kak-lsp" do %{
     cargo install --locked --force --path .
 }
 # set global lsp_cmd "kak-lsp -s %val{session} -vvvvv --log /tmp/kak-lsp.log"
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|latex) %{
     lsp-enable-window
 }
 set-option global lsp_auto_highlight_references true
+def -hidden insert-c-n %{
+  try %{
+    lsp-snippets-select-next-placeholders
+    exec '<a-;>d'
+  } catch %{
+    exec -with-hooks '<c-n>'
+  }
+}
+map global insert <c-n> "<a-;>: insert-c-n<ret>"
 
 plug "h-youhei/kakoune-surround"
 declare-user-mode plugin
