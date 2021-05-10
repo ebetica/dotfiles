@@ -37,7 +37,7 @@ plug "ebetica/kak-lsp" do %{
     cargo install --locked --force --path .
 }
 # set global lsp_cmd "kak-lsp -s %val{session} -vvvvv --log /tmp/kak-lsp.log"
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|latex) %{
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|sh|latex) %{
     lsp-enable-window
 }
 set-option global lsp_auto_highlight_references true
