@@ -77,9 +77,10 @@ unalias fd
 
 export SINGULARITYENV_PS1="Singularity:%/> "
 
-mb() { [ -d $1 ] && echo "$1" }
-export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/opt/slurm'; mb '/opt/etc'; mb '/etc/munge'; mb '/usr/lib64'; mb '/var/run') | paste -sd,)
+mb() { ([ -d $1 ] || [ -f $1 ]) && echo "$1" }
+export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/opt/slurm'; mb '/opt/etc'; mb '/etc/munge'; mb '/usr/lib64/libmunge.so.2'; mb '/var/run/munge') | paste -sd,)
 unset -f mb
+type squeue && export SINGULARITYENV_APPEND_PATH=$SINGULARITYENV_APPEND_PATH:$(dirname $(which squeue))
 alias S='singularity'
 
 eval `keychain --eval --agents ssh id_rsa`
