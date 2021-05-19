@@ -12,6 +12,7 @@ plug "andreyorst/fzf.kak" config %{
     map global user -docstring "Search hidden + gitignored files as well" a %{
         :fzf -kak-cmd %{edit -existing} -preview -items-cmd "fd --type f -L -H"<ret>
     }
+} defer "fzf-file" %{
     set-option global fzf_file_command 'fd -L --type f'
 }
 
@@ -33,7 +34,7 @@ plug "andreyorst/smarttab.kak" config %{
 }
 
 
-plug "ebetica/kak-lsp" do %{
+plug "kak-lsp/kak-lsp" do %{
     cargo install --locked --force --path .
 }
 # set global lsp_cmd "kak-lsp -s %val{session} -vvvvv --log /tmp/kak-lsp.log"

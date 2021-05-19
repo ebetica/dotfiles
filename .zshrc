@@ -75,6 +75,9 @@ alias tpaste='tmux saveb -'
 alias sq='squeue -u $USER -o "%.18i %.9P %.80j %.8u %.2t %.10M %.6D %R"'
 unalias fd
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 export SINGULARITYENV_PS1="Singularity:%/> "
 
 mb() { ([ -d $1 ] || [ -f $1 ]) && echo "$1" }
