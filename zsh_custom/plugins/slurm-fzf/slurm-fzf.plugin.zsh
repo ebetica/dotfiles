@@ -33,9 +33,7 @@ __slurm_stats() {
   command sacct --starttime "now-${FZF_SLURM_LOOKBACK:-14}days" --format=JobID,Jobname,partition,state,time,start,end,elapsed,nnodes,ncpus,nodelist -p -X | \
   	column -nts\| | (head -1 && tail -n +2 | tac) | \
   	FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-e:toggle-all $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" $(__fzfcmd) -m "$@" | \
-  	while read item; do
-      	    awk '$1!="JobID"{printf "%s ", $1}'
-  done
+        awk '{printf "%s ", $1}'
   local ret=$?
   echo
   return $ret
