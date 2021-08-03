@@ -73,7 +73,7 @@ alias icat='img2sixel'
 alias -g pdr='$(which pyscrun) -mipdb -cc'
 alias tcopy='tmux loadb -'
 alias tpaste='tmux saveb -'
-alias sq='squeue -u $USER -o "%.18i %.9P %.80j %.8u %.2t %.10M %.6D %R"'
+alias sq='squeue -u $USER -o "%i %P %j %u %t %M %D %R" | column -t'
 unalias fd
 
 export NVM_DIR="$HOME/.nvm"
@@ -82,7 +82,7 @@ export NVM_DIR="$HOME/.nvm"
 export SINGULARITYENV_PS1="Singularity:%/> "
 
 mb() { ([ -d $1 ] || [ -f $1 ]) && echo "$1" }
-export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/opt/slurm'; mb '/opt/etc'; mb '/etc/munge'; mb '/usr/lib64/libmunge.so.2'; mb '/var/run/munge') | paste -sd,)
+export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/large_experiments/'; mb '/opt/slurm'; mb '/opt/etc'; mb '/etc/munge'; mb '/usr/lib64/libmunge.so.2'; mb '/var/run/munge') | paste -sd,)
 unset -f mb
 type squeue && export SINGULARITYENV_APPEND_PATH=$SINGULARITYENV_APPEND_PATH:$(dirname $(which squeue))
 alias S='singularity'
