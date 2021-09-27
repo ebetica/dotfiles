@@ -31,7 +31,7 @@ __slurm_stats() {
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
   command sacct --starttime "now-${FZF_SLURM_LOOKBACK:-14}days" --format=JobID,Jobname,partition,state,time,alloctres,reqmem,nodelist,elapsed,end -p -X | \
-  	column -nts\| | (head -1 && tail -n +2 | tac) | \
+  	column -ts\| | tac | sed '1h;1d;$!H;$!d;G' | \
   	FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-e:toggle-all $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" $(__fzfcmd) -m "$@" | \
         awk '{printf "%s ", $1}' | sed 's/_\[[^]]*\]//g'
   local ret=$?
