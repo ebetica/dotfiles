@@ -10,7 +10,7 @@ plugins=(
 # These plugins conflict, do it in this order
 vi-mode git
 # make sure vi-mode is first
-archlinux cargo colored-man-pages common-aliases dirhistory docker fd
+archlinux colored-man-pages common-aliases dirhistory docker fd
 fzf fzf-z gem gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
 ubuntu web-search z zsh-syntax-highlighting slurm-fzf
