@@ -121,9 +121,6 @@ roots = [".htaccess", "composer.json"]
 command = "intelephense"
 args = ["--stdio"]
 
-[language.php.settings]
-intelephense.storagePath = "/tmp/intelephense"
-
 [language.nim]
 filetypes = ["nim"]
 roots = ["*.nimble", ".git"]
@@ -134,12 +131,6 @@ filetypes = ["elm"]
 roots = ["elm.json"]
 command = "elm-language-server"
 args = ["--stdio"]
-
-[language.elm.settings.elmLS]
-runtime = "node"
-elmPath = "elm"
-elmFormatPath = "elm-format"
-elmTestPath = "elm-test"
 
 [language.latex]
 filetypes = ["latex"]
