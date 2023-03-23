@@ -3,6 +3,7 @@ plug "andreyorst/plug.kak" noload
 plug 'delapouite/kakoune-livedown' %{
    set-option global livedown_browser 'firefox --new-window'
 }
+plug "https://gitlab.com/Screwtapello/kakoune-repl-buffer"
 
 plug "andreyorst/fzf.kak" config %{
     require-module fzf
@@ -25,12 +26,12 @@ plug "ul/kak-tree" do %{
 plug "andreyorst/smarttab.kak" config %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab
     hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
-    hook global WinSetOption filetype=(yaml|json) %{ set-option window tabstop 2 }
-    hook global WinSetOption filetype=(yaml|json) %{ set-option window softtabstop 2 }
 } defer "smarttab" %{
     echo -debug "smarttab"
     set-option global tabstop 4
     set-option global softtabstop 4
+    hook global WinSetOption filetype=(yaml|json) %{ set-option window tabstop 2 }
+    hook global WinSetOption filetype=(yaml|json) %{ set-option window softtabstop 2 }
 }
 
 
@@ -72,11 +73,14 @@ map global normal * <a-i>w*
 map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
 
 map global user f ':fzf-mode<ret>'
-map global user , ':lsp-hover<ret>'
+map global user <space> ':lsp-hover<ret>'
 map global user l ':enter-user-mode lsp<ret>'
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
+map global user -docstring "Replace selection with chatgpt's answer" c '<a-|>tee /tmp/chatgpt.txt<ret>| cat /tmp/chatgpt.txt | chatgpt -x<ret>'
+map global user -docstring "Resample the last question with chatgpt" r '|cat /tmp/chatgpt.txt | chatgpt -x<ret>'
+map global user -docstring "Ask chatgpt about the selection!" q '<a-|>(tee /tmp/chatgpt.txt; echo "\nWhat is this?" >> /tmp/chatgpt.txt)<ret>:info -title "chatgpt" "%sh{cat /tmp/chatgpt.txt | chatgpt -x}"<ret>'
 
 hook global WinCreate .* %{ addhl window/ show-matching }
 
