@@ -76,6 +76,7 @@ map global user f ':fzf-mode<ret>'
 map global user <space> ':lsp-hover<ret>'
 map global user l ':enter-user-mode lsp<ret>'
 map global user -docstring "repl-buffer-prompt" p ':repl-buffer-prompt<ret>'
+map global user -docstring "repl-buffer-send-text" p ':repl-buffer-send-text<ret>'
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
