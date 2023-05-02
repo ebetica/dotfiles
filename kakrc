@@ -15,6 +15,7 @@ plug "andreyorst/fzf.kak" config %{
     }
 } defer "fzf-file" %{
     set-option global fzf_file_command 'fd -L --type f'
+    set-option global fzf_grep_command 'rg --max-filesize 1M'
 }
 
 plug "ul/kak-tree" do %{
