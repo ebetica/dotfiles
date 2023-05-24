@@ -5,8 +5,8 @@
 set $mod Mod4
 
 # Set Screen
-set $primary eDP1
-set $secondary HDMI2
+set $primary eDP-1
+set $secondary HDMI-1
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -315,7 +315,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10  -corners '0---' -locker blurlock
+exec --no-startup-id xautolock -time 10  -corners '0---' -locker 'i3lock -c 5e1919'
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id setxkbmap -option "caps:swapescape"

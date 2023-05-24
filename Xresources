@@ -60,7 +60,7 @@ XTerm*decTerminalID: vt340
 XTerm*numColorRegisters: 256
 
 XTerm*renderFont: true
-xterm*faceName: Inconsolata
+xterm*faceName: DejaVu Sans Mono
 xterm*faceSize: 13
 xterm*font1: -*-*-*-*-*-*-6-*-*-*-*-*-*-*
 xterm*font2: -*-*-*-*-*-*-9-*-*-*-*-*-*-*
