@@ -81,10 +81,9 @@ map global user -docstring "repl-buffer-send-text" s ':repl-buffer-send-text<ret
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
-map global user -docstring "Replace selection with chatgpt's answer" c '<a-|>tee /tmp/chatgpt.txt<ret>| cat /tmp/chatgpt.txt | chatgpt -x<ret>'
-map global user -docstring "Resample the last question with chatgpt" r '|cat /tmp/chatgpt.txt | chatgpt -x<ret>'
-map global user -docstring "Interactive chatgpt mode" i ':repl-buffer-new chatgpt -i<ret>:repl-buffer-prompt<ret>'
-map global user -docstring "Ask chatgpt about the selection!" q '<a-|>(tee /tmp/chatgpt.txt; echo "\nWhat is this?" >> /tmp/chatgpt.txt)<ret>:info -title "chatgpt" "%sh{cat /tmp/chatgpt.txt | chatgpt -x}"<ret>'
+map global user -docstring "Replace selection with chatgpt's answer" c '| chatgpt'
+map global user -docstring "Interactive chatgpt mode" i ':repl-buffer-new chatgpt <ret>:repl-buffer-prompt<ret>'
+map global user -docstring "Ask chatgpt about the selection!" q '<a-|>(tee /tmp/chatgpt.txt; echo "\nCan you explain this snippet?" >> /tmp/chatgpt.txt)<ret>:info -title "chatgpt" "%sh{cat /tmp/chatgpt.txt | chatgpt}"<ret>'
 
 hook global WinCreate .* %{ addhl window/ show-matching }
 

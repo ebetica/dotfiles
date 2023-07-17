@@ -145,6 +145,8 @@ bind gj scrollto 100
 bind gk scrollto 0
 
 " Blacklists
-blacklistadd keep.google.com
-blacklistadd mail.google.com
-blacklistadd wolframcloud.com
+" blacklistadd keep.google.com
+" blacklistadd mail.google.com
+" blacklistadd wolframcloud.com
+
+set allowautofocus false
