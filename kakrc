@@ -18,12 +18,6 @@ plug "andreyorst/fzf.kak" config %{
     set-option global fzf_grep_command 'rg --max-filesize 1M'
 }
 
-plug "ul/kak-tree" do %{
-    git submodule update --init --recursive
-    cargo install --path . --force --features "rust python html javascript typescript cpp c bash json"
-}
-
-
 plug "andreyorst/smarttab.kak" config %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab
     hook global WinSetOption filetype=(rust|markdown|kak|c|cpp|python) expandtab
@@ -35,6 +29,10 @@ plug "andreyorst/smarttab.kak" config %{
     hook global WinSetOption filetype=(yaml|json) %{ set-option window softtabstop 2 }
 }
 
+plug "ul/kak-tree" do %{
+    git submodule update --init --recursive
+    cargo install --path . --force --features "rust python html javascript typescript cpp c bash json"
+}
 
 plug "kak-lsp/kak-lsp" do %{
     cargo install --locked --force --path .
@@ -81,9 +79,9 @@ map global user -docstring "repl-buffer-send-text" s ':repl-buffer-send-text<ret
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
-map global user -docstring "Replace selection with chatgpt's answer" c '| chatgpt'
-map global user -docstring "Interactive chatgpt mode" i ':repl-buffer-new chatgpt <ret>:repl-buffer-prompt<ret>'
-map global user -docstring "Ask chatgpt about the selection!" q '<a-|>(tee /tmp/chatgpt.txt; echo "\nCan you explain this snippet?" >> /tmp/chatgpt.txt)<ret>:info -title "chatgpt" "%sh{cat /tmp/chatgpt.txt | chatgpt}"<ret>'
+map global user -docstring "Replace selection with chatgpt's answer" c '| chatgpt --model gpt-4 '
+map global user -docstring "Interactive chatgpt mode" i ':repl-buffer-new chatgpt --model gpt-4 --interactive <ret>:repl-buffer-prompt<ret>'
+map global user -docstring "Ask chatgpt about the selection!" q '<a-|>tee /tmp/chatgpt.txt<ret>:repl-buffer-new chatgpt --model gpt-4 --interactive --init-prompt-from-file /tmp/chatgpt.txt <ret>:repl-buffer-prompt<ret>'
 
 hook global WinCreate .* %{ addhl window/ show-matching }
 
@@ -108,7 +106,7 @@ hook global WinSetOption filetype=rust %{ set window formatcmd 'rustfmt' }
 hook global WinSetOption filetype=json %{ set window formatcmd 'jq .' }
 hook global WinSetOption filetype=xml %{ set window formatcmd 'xmllint --format -' }
 hook global WinSetOption filetype=python %{
-    set window formatcmd 'isort --profile=black - | black -'
+    set window formatcmd 'autoflake --remove-all-unused-imports - | isort --profile=black - | black -'
     # hacky-workaround to get linefeeds into paste buffers
     # Credit to @cole-h
     execute-keys ':set-register p "        __import__(''ipdb'').set_trace()<c-v><ret>"<ret>'
