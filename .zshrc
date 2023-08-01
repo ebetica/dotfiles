@@ -8,12 +8,12 @@ ZSH_THEME="ebetica"
 export _Z_MAX_SCORE=100000
 plugins=(
 # These plugins conflict, do it in this order
-vi-mode git
+slurm-fzf vi-mode git
 # make sure vi-mode is first
 archlinux colored-man-pages common-aliases dirhistory docker fd
 fzf fzf-z gem gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
-ubuntu web-search z zsh-syntax-highlighting slurm-fzf
+ubuntu web-search z zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh

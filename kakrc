@@ -79,7 +79,7 @@ map global user -docstring "repl-buffer-send-text" s ':repl-buffer-send-text<ret
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
-map global user -docstring "Replace selection with chatgpt's answer" c '| chatgpt --model gpt-4 '
+map global user -docstring "Replace selection with chatgpt's answer" c '| chatgpt --model gpt-4 -i "Help me by completing this code. If you see a comment like # chatgpt: , please replace the comment with the right code and outputting everything else as is"'
 map global user -docstring "Interactive chatgpt mode" i ':repl-buffer-new chatgpt --model gpt-4 --interactive <ret>:repl-buffer-prompt<ret>'
 map global user -docstring "Ask chatgpt about the selection!" q '<a-|>tee /tmp/chatgpt.txt<ret>:repl-buffer-new chatgpt --model gpt-4 --interactive --init-prompt-from-file /tmp/chatgpt.txt <ret>:repl-buffer-prompt<ret>'
 

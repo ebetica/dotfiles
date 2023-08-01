@@ -46,3 +46,6 @@ Session.vim
 
 # Python
 __pycache__
+
+.coverage
+slurm-*.out

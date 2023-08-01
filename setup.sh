@@ -18,6 +18,8 @@ cp -f ~/.config/kak-lsp/kak-lsp.toml ~/.config/kak-lsp/kak-lsp.toml.backup
 # plug.kak
 mkdir -p ~/.config/kak/plugins/
 [ -d "~/.config/kak/plugins/plug.kak" ] && git clone https://github.com/andreyorst/plug.kak.git ~/.config/kak/plugins/plug.kak
+# cargo...
+curl https://sh.rustup.rs -sSf | sh
 
 ln -sf ~/dotfiles/.vimrc ~/
 ln -sf ~/dotfiles/.tmux.conf ~/
