@@ -42,7 +42,7 @@ hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|sh
     lsp-enable-window
     lsp-auto-hover-enable
     lsp-auto-signature-help-enable
-    lsp-auto-hover-insert-mode-enable
+    # lsp-auto-hover-insert-mode-enable
 }
 set-option global lsp_auto_highlight_references true
 def -hidden insert-c-n %{
