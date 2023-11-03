@@ -15,7 +15,7 @@ plug "andreyorst/fzf.kak" config %{
     }
 } defer "fzf-file" %{
     set-option global fzf_file_command 'fd -L --type f'
-    set-option global fzf_grep_command 'rg --max-filesize 1M'
+    set-option global fzf_grep_command 'rg'
 }
 
 plug "andreyorst/smarttab.kak" config %{
@@ -40,6 +40,9 @@ plug "kak-lsp/kak-lsp" do %{
 # set global lsp_cmd "kak-lsp -s %val{session} -vvvvv --log /tmp/kak-lsp.log"
 hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|sh|latex) %{
     lsp-enable-window
+    lsp-auto-hover-enable
+    lsp-auto-signature-help-enable
+    lsp-auto-hover-insert-mode-enable
 }
 set-option global lsp_auto_highlight_references true
 def -hidden insert-c-n %{
@@ -69,6 +72,7 @@ map global normal 'v' ':enter-user-mode plugin<ret>'
 
 map global normal = ':format<ret>'
 map global normal * <a-i>w*
+map global normal & *
 map global insert <c-w> '<a-;>:exec -draft hbd<ret>'
 
 map global user f ':fzf-mode<ret>'
@@ -81,7 +85,7 @@ map global normal \' \;
 map global normal <semicolon> :
 map global user -docstring "Replace selection with chatgpt's answer" c '| chatgpt --model gpt-4 -i "Help me by completing this code. If you see a comment like # chatgpt: , please replace the comment with the right code and outputting everything else as is"'
 map global user -docstring "Interactive chatgpt mode" i ':repl-buffer-new chatgpt --model gpt-4 --interactive <ret>:repl-buffer-prompt<ret>'
-map global user -docstring "Ask chatgpt about the selection!" q '<a-|>tee /tmp/chatgpt.txt<ret>:repl-buffer-new chatgpt --model gpt-4 --interactive --init-prompt-from-file /tmp/chatgpt.txt <ret>:repl-buffer-prompt<ret>'
+map global user -docstring "Ask chatgpt about the selection!" q '<a-|>tee /tmp/chatgpt.txt<ret>:repl-buffer-new chatgpt --model gpt-4 --interactive -i "Answer as briefly and succinctly as possible, avoiding any unnecessary words or repetition." --init-prompt-from-file /tmp/chatgpt.txt <ret>:repl-buffer-prompt<ret>'
 
 hook global WinCreate .* %{ addhl window/ show-matching }
 

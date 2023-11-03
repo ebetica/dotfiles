@@ -49,3 +49,13 @@ __pycache__
 
 .coverage
 slurm-*.out
+
+evolutionaryscale.egg-info/
+
+wandb
+.pytest
+
+.coverage.*
+tags
+wandb
+.ipynb_checkpoints
