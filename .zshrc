@@ -13,7 +13,7 @@ slurm-fzf vi-mode git
 archlinux colored-man-pages common-aliases dirhistory docker fd
 fzf fzf-z gem gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
-ubuntu web-search z zsh-syntax-highlighting
+ubuntu web-search z zsh-syntax-highlighting brew
 )
 
 source $ZSH/oh-my-zsh.sh
