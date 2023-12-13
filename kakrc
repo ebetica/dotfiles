@@ -110,7 +110,7 @@ hook global WinSetOption filetype=rust %{ set window formatcmd 'rustfmt' }
 hook global WinSetOption filetype=json %{ set window formatcmd 'jq .' }
 hook global WinSetOption filetype=xml %{ set window formatcmd 'xmllint --format -' }
 hook global WinSetOption filetype=python %{
-    set window formatcmd '(type ruff &>/dev/null && ruff format -) || autoflake --remove-all-unused-imports - | isort --profile=black - | black -'
+    set window formatcmd '(type ruff >/dev/null && ruff format -) || autoflake --remove-all-unused-imports - | isort --profile=black - | black -'
     # hacky-workaround to get linefeeds into paste buffers
     # Credit to @cole-h
     execute-keys ':set-register p "        __import__(''ipdb'').set_trace()<c-v><ret>"<ret>'
