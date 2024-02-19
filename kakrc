@@ -83,9 +83,9 @@ map global user -docstring "repl-buffer-send-text" s ':repl-buffer-send-text<ret
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
-map global user -docstring "Replace selection with chatgpt's answer" c '| chatgpt --model gpt-4-1106-preview -i "Help me by completing this code. If you see a comment like # chatgpt: , please replace the comment with the right code and outputting everything else as is"'
-map global user -docstring "Interactive chatgpt mode" i ':repl-buffer-new chatgpt --model gpt-4-1106-preview --interactive <ret>:repl-buffer-prompt<ret>'
-map global user -docstring "Ask chatgpt about the selection!" q '<a-|>tee /tmp/chatgpt.txt<ret>:repl-buffer-new chatgpt --model gpt-4-1106-preview --interactive -i "Answer as briefly and succinctly as possible, avoiding any unnecessary words or repetition." --init-prompt-from-file /tmp/chatgpt.txt <ret>:repl-buffer-prompt<ret>'
+map global user -docstring "Replace selection with llm's answer" c '| llm --model mix "Help me by completing this code. If you see a comment like # TODO , please replace the comment with the right code and outputting everything else as is"'
+map global user -docstring "Interactive llm mode" i ':repl-buffer-new llm chat --model mix -s "be concise, helpful, and follow instructions exactly"<ret>:repl-buffer-prompt<ret>'
+map global user -docstring "Ask llm about the selection!" q '"ry:repl-buffer-new llm chat --model mix -s "be concise, helpful, and follow instructions exactly"<ret>:repl-buffer-prompt<ret>!multi<ret><esc>:repl-buffer-send-text %reg{r}<ret>:repl-buffer-prompt<ret>'
 
 hook global WinCreate .* %{ addhl window/ show-matching }
 
@@ -105,12 +105,12 @@ hook global InsertCompletionHide .* %{
     unmap window insert <s-tab> <c-p>
 }
 
-hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -assume-filename ${kak_buffile}' }
+hook global WinSetOption filetype=cpp %{ set window formatcmd 'clang-format-7 -assume-filename %val{bufname}' }
 hook global WinSetOption filetype=rust %{ set window formatcmd 'rustfmt' }
 hook global WinSetOption filetype=json %{ set window formatcmd 'jq .' }
 hook global WinSetOption filetype=xml %{ set window formatcmd 'xmllint --format -' }
 hook global WinSetOption filetype=python %{
-    set window formatcmd '(type ruff >/dev/null && ruff format -) || autoflake --remove-all-unused-imports - | isort --profile=black - | black -'
+    set window formatcmd '(type ruff >/dev/null && ruff check --fix-only - | ruff format -) || autoflake --remove-all-unused-imports - | isort --profile=black - | black -'
     # hacky-workaround to get linefeeds into paste buffers
     # Credit to @cole-h
     execute-keys ':set-register p "        __import__(''ipdb'').set_trace()<c-v><ret>"<ret>'

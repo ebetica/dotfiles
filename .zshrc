@@ -73,7 +73,7 @@ alias icat='img2sixel'
 alias -g pdr='$(which pyscrun) -mipdb -cc'
 alias tcopy='tmux loadb -'
 alias tpaste='tmux saveb -'
-alias sq='squeue -u $USER -o "%i %P %j %u %t %M %D %R" | column -t'
+alias sq='squeue -o "%i %P %j %u %t %M %D %R" | column -t'
 alias ptag='ctags -R --fields=+l --languages=python --python-kinds=-iv .'
 unalias fd
 
