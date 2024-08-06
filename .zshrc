@@ -13,7 +13,7 @@ slurm-fzf vi-mode git
 archlinux colored-man-pages common-aliases dirhistory docker fd
 fzf fzf-z gem gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
-ubuntu web-search z zsh-syntax-highlighting brew
+ubuntu web-search zsh-syntax-highlighting brew
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -35,7 +35,7 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 # User Configeration
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.pixi/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH
 export CONDA_AUTO_ACTIVATE_BASE=0

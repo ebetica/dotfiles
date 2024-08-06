@@ -83,7 +83,7 @@ map global user -docstring "repl-buffer-send-text" s ':repl-buffer-send-text<ret
 map global normal D ':lsp-find-error<ret>l:lsp-hover<ret>'
 map global normal \' \;
 map global normal <semicolon> :
-map global user -docstring "Replace selection with llm's answer" c '| llm --model mix "Help me by completing this code. If you see a comment like # TODO , please replace the comment with the right code and outputting everything else as is"'
+map global user -docstring "Replace selection with llm's answer" c '| llm --model mix "Help me by completing this code. If you see a comment like # TODO , please replace the comment with the right code and outputting everything else as is. Have no other output except for code."'
 map global user -docstring "Interactive llm mode" i ':repl-buffer-new llm chat --model mix -s "be concise, helpful, and follow instructions exactly"<ret>:repl-buffer-prompt<ret>'
 map global user -docstring "Ask llm about the selection!" q '"ry:repl-buffer-new llm chat --model mix -s "be concise, helpful, and follow instructions exactly"<ret>:repl-buffer-prompt<ret>!multi<ret><esc>:repl-buffer-send-text %reg{r}<ret>:repl-buffer-prompt<ret>'
 

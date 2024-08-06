@@ -50,7 +50,7 @@ __pycache__
 .coverage
 slurm-*.out
 
-evolutionaryscale.egg-info/
+*.egg-info/
 
 wandb
 .pytest
@@ -59,3 +59,7 @@ wandb
 tags
 wandb
 .ipynb_checkpoints
+
+evolutionaryscale/opensource/data/
+slurm
+.pixi
