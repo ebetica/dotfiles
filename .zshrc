@@ -10,9 +10,9 @@ plugins=(
 # These plugins conflict, do it in this order
 slurm-fzf vi-mode git
 # make sure vi-mode is first
-archlinux colored-man-pages common-aliases dirhistory docker fd
+archlinux colored-man-pages common-aliases dirhistory docker
 fzf fzf-z gem gitfast github history-substring-search
-last-working-dir mercurial mosh npm pip ripgrep rsync rust sudo tmux
+last-working-dir mercurial mosh npm pip rsync rust sudo tmux
 ubuntu web-search zsh-syntax-highlighting brew
 )
 
