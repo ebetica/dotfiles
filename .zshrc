@@ -8,12 +8,14 @@ ZSH_THEME="ebetica"
 export _Z_MAX_SCORE=100000
 plugins=(
 # These plugins conflict, do it in this order
-slurm-fzf vi-mode git
+vi-mode git
 # make sure vi-mode is first
 archlinux colored-man-pages common-aliases dirhistory docker
 fzf fzf-z gem gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip rsync rust sudo tmux
 ubuntu web-search zsh-syntax-highlighting brew
+# Make sure this overrides all other plugins
+slurm-fzf 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -75,7 +77,7 @@ alias tcopy='tmux loadb -'
 alias tpaste='tmux saveb -'
 alias sq='squeue -o "%i %P %j %u %t %M %D %R" | column -t'
 alias ptag='ctags -R --fields=+l --languages=python --python-kinds=-iv .'
-unalias fd
+unalias -m fd
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -83,10 +85,11 @@ export NVM_DIR="$HOME/.nvm"
 export SINGULARITYENV_PS1="Singularity:%/> "
 
 mb() { ([ -d $1 ] || [ -f $1 ]) && echo "$1" }
-export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/large_experiments/'; mb '/opt/slurm'; mb '/opt/etc'; mb '/etc/munge'; mb '/usr/lib64/libmunge.so.2'; mb '/var/run/munge') | paste -sd,)
+# export SINGULARITY_BIND=$((mb '/checkpoint'; mb '/scratch'; mb '/misc'; mb '/large_experiments/'; mb '/opt/slurm'; mb '/opt/etc'; mb '/etc/munge'; mb '/usr/lib64/libmunge.so.2'; mb '/var/run/munge') | paste -sd,)
 unset -f mb
 type squeue && export SINGULARITYENV_APPEND_PATH=$SINGULARITYENV_APPEND_PATH:$(dirname $(which squeue))
 alias S='singularity'
+alias glmc='pre-commit run && gd --staged | llm -m ppl -s "write me a git commit message for this diff, make it one line, and be concise, the output is used as is so no quotes or anything." | gc -e -F - --no-verify'
 
 eval `keychain --eval --agents ssh id_rsa`
 
