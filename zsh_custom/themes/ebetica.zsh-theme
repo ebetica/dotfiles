@@ -13,11 +13,13 @@ function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('%F{blue}`basename $VIRTUAL_ENV`%f') '
 }
 PR_GIT_UPDATE=1
+PR_LAST_UPDATE=0
 
 setopt prompt_subst
 
 autoload -U add-zsh-hook
 autoload -Uz vcs_info
+autoload -Uz async && async
 
 #use extended color palette if available
 if [[ $terminfo[colors] -ge 256 ]]; then
@@ -78,22 +80,44 @@ add-zsh-hook preexec steeef_preexec
 
 function steeef_chpwd {
     PR_GIT_UPDATE=1
+    # Force immediate update when changing directories
+    vcs_info_msg_0_=""
 }
 add-zsh-hook chpwd steeef_chpwd
 
-function steeef_precmd {
-    if [[ -n "$PR_GIT_UPDATE" ]] ; then
-        # check for untracked files or updated submodules, since vcs_info doesn't
-        if git ls-files --other --exclude-standard 2> /dev/null | grep -q "."; then
-            PR_GIT_UPDATE=1
-            FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%}●${PR_RST})"
-        else
-            FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
-        fi
-        zstyle ':vcs_info:*:prompt:*' formats " ${FMT_BRANCH}"
+function steeef_vcs_info_async {
+    cd -q "$PWD"
+    FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
+    zstyle ':vcs_info:*:prompt:*' formats " ${FMT_BRANCH}"
+    vcs_info 'prompt'
+    echo $vcs_info_msg_0_
+}
 
-        vcs_info 'prompt'
+function steeef_vcs_info_done {
+    local job=$1 code=$2 output=$3
+    if [[ $code -eq 0 ]]; then
+        vcs_info_msg_0_=$output
+        zle && zle reset-prompt
+    fi
+}
+
+function steeef_precmd {
+    local current_time=$EPOCHSECONDS
+    
+    # Check if 30 seconds have passed since last update
+    if [[ $((current_time - PR_LAST_UPDATE)) -ge 30 ]]; then
+        PR_GIT_UPDATE=1
+    fi
+    
+    if [[ -n "$PR_GIT_UPDATE" ]] ; then
+        # Stop any existing worker to prevent conflicts
+        async_stop_worker vcs_worker 2>/dev/null
+        # Start async vcs_info job
+        async_start_worker vcs_worker -n
+        async_register_callback vcs_worker steeef_vcs_info_done
+        async_job vcs_worker steeef_vcs_info_async
         PR_GIT_UPDATE=
+        PR_LAST_UPDATE=$current_time
     fi
 }
 add-zsh-hook precmd steeef_precmd

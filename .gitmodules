@@ -17,5 +17,5 @@
 	path = zsh_custom/plugins/zsh-z
 	url = https://github.com/agkozak/zsh-z
 [submodule "zsh_custom/plugins/zsh-async"]
-	path = zsh_custom/plugins/zsh-async
+	path = zsh_custom/plugins/async
 	url = https://github.com/mafredri/zsh-async
