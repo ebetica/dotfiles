@@ -13,14 +13,18 @@ vi-mode git
 archlinux colored-man-pages common-aliases dirhistory docker
 fzf fzf-z gem gitfast github history-substring-search
 last-working-dir mercurial mosh npm pip rsync rust sudo tmux
-ubuntu web-search zsh-syntax-highlighting brew
+ubuntu web-search zsh-syntax-highlighting brew async
 # Make sure this overrides all other plugins
-slurm-fzf 
+slurm-fzf
 )
 
 source $ZSH/oh-my-zsh.sh
 fpath=("$ZSH_CUSTOM/completions" $fpath)
-autoload -U compinit && compinit
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -79,8 +83,8 @@ alias sq='squeue -o "%i %P %j %u %t %M %D %R" | column -t'
 alias ptag='ctags -R --fields=+l --languages=python --python-kinds=-iv .'
 unalias -m fd
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export SINGULARITYENV_PS1="Singularity:%/> "
 
@@ -91,6 +95,6 @@ type squeue && export SINGULARITYENV_APPEND_PATH=$SINGULARITYENV_APPEND_PATH:$(d
 alias S='singularity'
 alias glmc='pre-commit run && gd --staged | llm -m ppl -s "write me a git commit message for this diff, make it one line, and be concise, the output is used as is so no quotes or anything." | gc -e -F - --no-verify'
 
-eval `keychain --eval --agents ssh id_rsa`
+# eval `keychain --eval --agents ssh id_rsa`
 
-fortune
+# fortune
