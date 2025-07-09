@@ -1,0 +1,39 @@
+.quick-input-widget {
+    width: 50% !important;
+    left: 50vw !important;
+    top: 40% !important;
+    transform: translate(-50%, 0) !important;
+    padding: 15px !important;
+    background-color: rgb(30, 30, 30) !important;
+    border-radius: 10px !important;
+    border: 1px solid #007ACC !important;
+    overflow: hidden !important;
+}
+
+.quick-input-widget .quick-input-header {
+    padding: 0px !important;
+    margin-bottom: 10px;
+}
+
+.quick-input-widget .monaco-inputbox {
+    padding: 10px !important;
+    border-radius: 5px !important;
+}
+
+.quick-input-widget .quick-input-list-entry {
+    position: relative;
+    padding: 0 5px 0px 15px;
+}
+
+.quick-input-widget .quick-input-list-entry .codicon[class*=codicon-] {
+    font-size: 12px;
+}
+
+.quick-input-widget .quick-input-list .quick-input-list-entry.quick-input-list-separator-border {
+    border-top-width: 0px !important;
+}
+
+.quick-input-widget.show-file-icons, .editor-widget.find-widget {
+    box-shadow: none !important;
+}
+
