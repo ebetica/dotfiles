@@ -1,0 +1,474 @@
+{
+    "workbench.editor.navigationScope": "editorGroup",
+    "workbench.editor.showTabs": "single",
+    "workbench.editor.revealIfOpen": false,
+    "editor.autoClosingBrackets": "never",
+    "python.analysis.indexing": true,
+    "python.analysis.autoImportCompletions": true,
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.organizeImports": "explicit",
+        "notebook.source.fixAll": "explicit"
+    },
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        }
+    },
+    "typescript.tsc.autoDetect": "off",
+    "dance.menus": {
+        "object": {
+            "title": "Select object...",
+            "items": {
+                "b()": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "\\((?#inner)\\)"
+                        }
+                    ],
+                    "text": "parenthesis block"
+                },
+                "B{}": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "\\{(?#inner)\\}"
+                        }
+                    ],
+                    "text": "braces block"
+                },
+                "r[]": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "\\[(?#inner)\\]"
+                        }
+                    ],
+                    "text": "brackets block"
+                },
+                "a<>": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "<(?#inner)>"
+                        }
+                    ],
+                    "text": "angle block"
+                },
+                "Q\"": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#noescape)\"(?#inner)(?#noescape)\""
+                        }
+                    ],
+                    "text": "double quote string"
+                },
+                "q'": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#noescape)'(?#inner)(?#noescape)'"
+                        }
+                    ],
+                    "text": "single quote string"
+                },
+                "g`": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#noescape)`(?#inner)(?#noescape)`"
+                        }
+                    ],
+                    "text": "grave quote string"
+                },
+                "w": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "[\\p{L}_\\d]+(?<after>[^\\S\\n]+)"
+                        }
+                    ],
+                    "text": "word"
+                },
+                "W": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "[\\S]+(?<after>[^\\S\\n]+)"
+                        }
+                    ],
+                    "text": "WORD"
+                },
+                "s": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#predefined=sentence)"
+                        }
+                    ],
+                    "text": "sentence"
+                },
+                "p": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#predefined=paragraph)"
+                        }
+                    ],
+                    "text": "paragraph"
+                },
+                " ": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?<before>[\\s]+)[^\\S\\n]+(?<after>[\\s]+)"
+                        }
+                    ],
+                    "text": "whitespaces"
+                },
+                "i": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#predefined=indent)"
+                        }
+                    ],
+                    "text": "indent"
+                },
+                "n": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#singleline)-?[\\d_]+(\\.[0-9]+)?([eE]\\d+)?"
+                        }
+                    ],
+                    "text": "number"
+                },
+                "u": {
+                    "command": "dance.seek.object",
+                    "args": [
+                        {
+                            "input": "(?#predefined=argument)"
+                        }
+                    ],
+                    "text": "argument"
+                },
+                "c": {
+                    "command": "dance.seek.object",
+                    "text": "custom object desc"
+                }
+            }
+        },
+        "goto": {
+            "title": "Go...",
+            "items": {
+                "h": {
+                    "text": "to line start",
+                    "command": "dance.select.lineStart"
+                },
+                "H": {
+                    "text": "to line start",
+                    "command": "dance.select.lineStart"
+                },
+                "l": {
+                    "text": "to line end",
+                    "command": "dance.select.lineEnd"
+                },
+                "L": {
+                    "text": "to line end",
+                    "command": "dance.select.lineEnd"
+                },
+                "i": {
+                    "text": "to non-blank line start",
+                    "command": "dance.select.lineStart",
+                    "args": [
+                        {
+                            "skipBlank": true
+                        }
+                    ]
+                },
+                "gk": {
+                    "text": "to first line",
+                    "command": "dance.select.lineStart",
+                    "args": [
+                        {
+                            "count": 1
+                        }
+                    ]
+                },
+                "j": {
+                    "text": "to last line",
+                    "command": "dance.select.lastLine"
+                },
+                "J": {
+                    "text": "to last line",
+                    "command": "dance.select.lastLine"
+                },
+                "e": {
+                    "text": "to last char of last line",
+                    "command": "dance.select.lineEnd",
+                    "args": [
+                        {
+                            "count": 2147483647
+                        }
+                    ]
+                },
+                "t": {
+                    "text": "to first displayed line",
+                    "command": "dance.select.firstVisibleLine"
+                },
+                "c": {
+                    "text": "to middle displayed line",
+                    "command": "dance.select.middleVisibleLine"
+                },
+                "a": {
+                    "text": "to last buffer",
+                    "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup"
+                },
+                "b": {
+                    "text": "to last buffer...",
+                    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+                },
+                "p": {
+                    "text": "to previous buffer",
+                    "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup"
+                },
+                "n": {
+                    "text": "to next buffer",
+                    "command": "workbench.action.openNextRecentlyUsedEditorInGroup"
+                },
+                "f": {
+                    "text": "to file whose name is selected",
+                    "command": "dance.selections.open"
+                },
+                "d": {
+                    "text": "to definition",
+                    "command": "editor.action.revealDefinition"
+                },
+                "r": {
+                    "text": "to references",
+                    "command": "editor.action.goToReferences"
+                },
+                ".": {
+                    "text": "to last buffer modification position",
+                    "command": "dance.selections.restore",
+                    "args": [
+                        {
+                            "register": " insert"
+                        }
+                    ]
+                }
+            }
+        },
+        "view": {
+            "title": "View",
+            "items": {
+                "vc": {
+                    "text": "center cursor vertically",
+                    "command": "dance.view.line",
+                    "args": [
+                        {
+                            "at": "center"
+                        }
+                    ]
+                },
+                "t": {
+                    "text": "cursor on top",
+                    "command": "dance.view.line",
+                    "args": [
+                        {
+                            "at": "top"
+                        }
+                    ]
+                },
+                "b": {
+                    "text": "cursor on bottom",
+                    "command": "dance.view.line",
+                    "args": [
+                        {
+                            "at": "bottom"
+                        }
+                    ]
+                },
+                "j": {
+                    "text": "scroll down",
+                    "command": "editor.action.smartSelect.grow"
+                },
+                "l": {
+                    "text": "scroll up",
+                    "command": "editor.action.smartSelect.expand"
+                },
+                "k": {
+                    "text": "scroll up",
+                    "command": "editor.action.smartSelect.shrink"
+                },
+                "h": {
+                    "text": "scroll down",
+                    "command": "editor.action.smartSelect.shrink"
+                }
+            }
+        }
+    },
+    "dance.modes": {
+        "": {
+            "hiddenSelectionsIndicatorsDecoration": {
+                "after": {
+                    "color": "$list.warningForeground"
+                },
+                "backgroundColor": "$inputValidation.warningBackground",
+                "borderColor": "$inputValidation.warningBorder",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "isWholeLine": true
+            }
+        },
+        "input": {
+            "cursorStyle": "underline-thin"
+        },
+        "insert": {
+            "onLeaveMode": [
+                [
+                    ".selections.save",
+                    {
+                        "register": " insert"
+                    }
+                ]
+            ]
+        },
+        "select": {},
+        "normal": {
+            "cursorStyle": "block",
+            "selectionBehavior": "character",
+            "lineNumbers": "relative",
+            "decorations": {
+                "applyTo": "main",
+                "backgroundColor": "$editor.hoverHighlightBackground",
+                "isWholeLine": true
+            },
+            "onEnterMode": [
+                [
+                    ".selections.restore",
+                    {
+                        "register": " ^",
+                        "try": true
+                    }
+                ]
+            ],
+            "onLeaveMode": [
+                [
+                    ".selections.save",
+                    {
+                        "register": " ^",
+                        "style": {
+                            "borderColor": "$editor.selectionBackground",
+                            "borderStyle": "solid",
+                            "borderWidth": "2px",
+                            "borderRadius": "1px"
+                        },
+                        "until": [
+                            [
+                                "mode-did-change",
+                                {
+                                    "include": "normal"
+                                }
+                            ],
+                            [
+                                "selections-did-change"
+                            ]
+                        ]
+                    }
+                ]
+            ]
+        }
+    },
+    "workbench.activityBar.location": "hidden",
+    "editor.minimap.enabled": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "remote.SSH.connectTimeout": 180,
+    "editor.accessibilitySupport": "off",
+    "editor.multiCursorLimit": 20000,
+    "editor.semanticTokenColorCustomizations": {
+        "[Dark Modern]": {
+            "rules": {
+                "variable": "#9CDCFE",
+                "variable.readonly": "#4EC9B0",
+                "parameter": "#9CDCFE",
+                "property": "#9CDCFE",
+                "function": "#DCDCAA",
+                "method": "#DCDCAA",
+                "class": "#4EC9B0",
+                "interface": "#4EC9B0",
+                "type": "#4EC9B0",
+                "enum": "#4EC9B0",
+                "keyword": "#569CD6",
+                "string": "#CE9178",
+                "number": "#B5CEA8",
+                "regexp": "#D16969",
+                "comment": "#6A9955",
+                "*.declaration": {
+                    "fontStyle": "bold"
+                },
+                "*.readonly": {
+                    "fontStyle": "italic"
+                },
+                "*.static": {
+                    "fontStyle": "underline"
+                },
+                "*.abstract": {
+                    "fontStyle": "italic"
+                },
+                "*.deprecated": {
+                    "textDecoration": "line-through"
+                }
+            }
+        }
+    },
+    "terminal.integrated.profiles.linux": {
+        "tmux": {
+            "path": "zsh",
+            "args": [
+                "-c",
+                "tmux attach -d -t vscode_${workspaceFolder} || tmux new -s vscode_${workspaceFolder} "
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "tmux",
+    "terminal.integrated.macOptionIsMeta": true,
+    "terminal.integrated.macOptionClickForcesSelection": true,
+    "terminal.integrated.showLinkHover": false,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.inheritEnv": false,
+    "workbench.colorCustomizations": {
+        "terminalCursor.background": "#073642",
+        "terminalCursor.foreground": "#839496",
+        "terminal.ansiBlack": "#073642",
+        "terminal.ansiBlue": "#268BD2",
+        "terminal.ansiBrightBlue": "#839496",
+        "terminal.ansiBrightCyan": "#93A1A1",
+        "terminal.ansiBrightGreen": "#586E75",
+        "terminal.ansiBrightMagenta": "#6C71C4",
+        "terminal.ansiBrightRed": "#CB4B16",
+        "terminal.ansiBrightWhite": "#FDF6E3",
+        "terminal.ansiBrightYellow": "#657B83",
+        "terminal.ansiCyan": "#2AA198",
+        "terminal.ansiGreen": "#859900",
+        "terminal.ansiMagenta": "#D33682",
+        "terminal.ansiRed": "#DC322F",
+        "terminal.ansiWhite": "#EEE8D5",
+        "terminal.ansiYellow": "#B58900"
+    },
+    "vscode_custom_css.imports": [
+        "file://${userHome}/dotfiles/vscode-custom.css"
+    ],
+    "workbench.colorTheme": "Default Dark Modern",
+    "cursor.cpp.disabledLanguages": [
+        "plaintext"
+    ],
+    "workbench.editor.enablePreview": false,
+    "explorer.confirmDragAndDrop": false
+}

@@ -1,0 +1,280 @@
+// Place your key bindings in this file to override the defaults
+[
+  // Movement keys
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.closeEditorsInGroup"
+  },
+  {
+    "key": "space c",
+    "command": "workbench.action.splitEditor",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space d",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "panelFocus && !terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "panelFocus && !terminalFocus"
+  },
+  // Terminal integration
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "-workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "ctrl+2",
+    "command": "-workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "ctrl+3",
+    "command": "-workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "ctrl+4",
+    "command": "-workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "ctrl+5",
+    "command": "-workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "ctrl+6",
+    "command": "-workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "ctrl+7",
+    "command": "-workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "ctrl+8",
+    "command": "-workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "ctrl+9",
+    "command": "-workbench.action.openEditorAtIndex9"
+  },
+  // format
+  {
+    "key": "=",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.formatDocument",
+        "editor.action.organizeImports",
+      ]
+    },
+    "when": "editorTextFocus && dance.mode == 'normal' && resourceLangId != 'python'",
+  },
+  {
+    "key": "=",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.formatDocument",
+        "editor.action.organizeImports",
+        "editor.action.fixAll",
+      ]
+    },
+    "when": "editorTextFocus && dance.mode == 'normal' && resourceLangId == 'python'",
+  },
+  {
+    "key": "=",
+    "command": "notebook.formatCell",
+    "when": "editorTextFocus && dance.mode == 'normal' && notebookEditorFocused",
+  },
+  {
+    "key": "cmd+enter",
+    "command": "notebook.cell.insertCodeCellBelow",
+    "when": "editorTextFocus && dance.mode == 'normal' && notebookEditorFocused",
+  },
+  {
+    "key": "cmd+shift+enter",
+    "command": "notebook.cell.insertMarkdownCellAbove",
+    "when": "editorTextFocus && dance.mode == 'normal' && notebookEditorFocused",
+  },
+  // Leader menus, allow space + key to do something on normal mode
+  {
+    "key": "space space",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "/",
+    "command": "dance.search",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space f",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space t",
+    "command": "workbench.action.showAllSymbols",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space e",
+    "command": "breadcrumbs.focusAndSelect",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space /",
+    "command": "workbench.action.quickTextSearch",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space n",
+    "command": "workbench.action.splitEditor",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space r",
+    "command": "editor.action.refactor",
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  {
+    "key": "space escape",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "notebook.cell.quitEdit",
+      ],
+    },
+    "when": "editorTextFocus && dance.mode == 'normal'",
+  },
+  // Breadcrumb navigation with vim keybinds
+  {
+    "key": "h",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "l",
+    "command": "breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "j",
+    "command": "list.focusDown",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "k",
+    "command": "list.focusUp",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  // Random stuff
+  {
+    "key": "ctrl+w",
+    "command": "deleteWordLeft",
+    "when": "editorTextFocus && dance.mode == 'insert'",
+  },
+  {
+    "key": "alt+space",
+    "command": "workbench.action.toggleMaximizeEditorGroup",
+    "when": "editorTextFocus && !terminalFocus",
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorTextFocus && dance.mode == 'insert",
+  },
+  // Lets tab and shift tab cycle through things
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "list.focusDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "list.focusUp",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "list.expand",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "list.collapse",
+    "when": "listFocus && !inputFocus"
+  },
+  // Sidebar stuff
+  {
+    "key": "cmd+e",
+    "command": "workbench.view.explorer",
+    "when": "editorTextFocus",
+  },
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "!editorTextFocus",
+  },
+]
