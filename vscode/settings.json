@@ -470,5 +470,8 @@
         "plaintext"
     ],
     "workbench.editor.enablePreview": false,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "remote.SSH.remotePlatform": {
+        "andro_vscode_user": "linux"
+    }
 }

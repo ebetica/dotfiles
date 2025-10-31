@@ -7,7 +7,7 @@ start-at-login = true
 
 
 [mode.main.binding]
-alt-enter = 'exec-and-forget osascript /Users/ebetica0/.local/scripts/new-item-window.scpt'
+alt-enter = 'exec-and-forget osascript /Users/zlin/.local/scripts/new-item-window.scpt'
 
 alt-h = 'focus left'
 alt-j = 'focus down'

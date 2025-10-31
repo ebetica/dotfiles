@@ -59,6 +59,8 @@ bindkey "${terminfo[kend]}" end-of-line
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '^[b' backward-word
+bindkey '^[f' forward-word
 bindkey "^[[3~" 	delete-char
 
 # fzf with fancy looking linewrap indicator
