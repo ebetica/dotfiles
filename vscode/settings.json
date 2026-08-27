@@ -473,5 +473,7 @@
     "explorer.confirmDragAndDrop": false,
     "remote.SSH.remotePlatform": {
         "andro_vscode_user": "linux"
-    }
+    },
+    "remote.autoForwardPortsSource": "hybrid",
+    "terminal.integrated.gpuAcceleration": "off"
 }
